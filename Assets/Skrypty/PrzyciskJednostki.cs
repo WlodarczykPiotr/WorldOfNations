@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PrzyciskJednostki : MonoBehaviour
+class PrzyciskJednostki : MonoBehaviour
 {
     [SerializeField]
-    protected GameObject prefabrykat;
+    protected GameObject prefabrykat = null;
 
     Text tekst;
     Button przycisk;
 
-    private void Awake()
+    void Awake()
     {
         tekst = GetComponentInChildren<Text>(true);
         przycisk = GetComponentInChildren<Button>(true);
@@ -25,7 +25,7 @@ public class PrzyciskJednostki : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
         Transakcja transakcja;
 
@@ -36,14 +36,14 @@ public class PrzyciskJednostki : MonoBehaviour
         }
     }
 
-    public virtual void UtworzJednostke()
+    protected virtual void UtworzJednostke()
     {
         StartCoroutine(Szkolenie());
     }
 
-    public IEnumerator Szkolenie()
+    private IEnumerator Szkolenie()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(1.0f);
         KontrolerKamery.UtworzJednostki(prefabrykat);
     }
 }

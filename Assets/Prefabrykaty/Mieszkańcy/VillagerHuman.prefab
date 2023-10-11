@@ -9701,7 +9701,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ec03951abc96f14caebf36248508a3b, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11654,9 +11654,9 @@ GameObject:
   - component: {fileID: 2092821720}
   - component: {fileID: 2092821719}
   - component: {fileID: 2092821718}
-  - component: {fileID: 2092821721}
   - component: {fileID: 2092821722}
   - component: {fileID: 6194121118841509142}
+  - component: {fileID: -7921017995674338651}
   m_Layer: 0
   m_Name: VillagerHuman
   m_TagString: Untagged
@@ -11746,34 +11746,6 @@ MonoBehaviour:
   kamien: 10
   zloto: 5
   zdjecie: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
---- !u!114 &2092821721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8280073868254655800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 469046b5180ad7148ab295e16ef162ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pasekZycia: {fileID: 2152526949461181680, guid: 0d9976b003f446d4991f0afad20938f2,
-    type: 3}
-  pasek: 0
-  maks: 1000
-  obrazeniaAtaku: 10
-  szybkoscAtaku: 1
-  odlegloscDoAtaku: 2
-  stop: 0
-  odglosWalki: {fileID: 0}
-  efektCiosu: {fileID: 1177793630}
-  efektUderzenia: {fileID: 381011472}
-  warstwaCiosu:
-    serializedVersion: 2
-    m_Bits: 5632
-  dlugoscAtaku: 0.3
-  szybkoscGonitwy: 5
 --- !u!195 &2092821722
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -11892,6 +11864,39 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-7921017995674338651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8280073868254655800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5341df5773f8d41bf5d60d26400530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pasekZycia: {fileID: 2152526949461181680, guid: 0d9976b003f446d4991f0afad20938f2,
+    type: 3}
+  pasek: 0
+  maks: 100
+  obrazeniaAtaku: 10
+  szybkoscAtaku: 1
+  odlegloscDoAtaku: 1
+  stop: 1
+  efektCiosu: {fileID: 0}
+  efektUderzenia: {fileID: 0}
+  warstwaCiosu:
+    serializedVersion: 2
+    m_Bits: 0
+  dlugoscAtaku: 1
+  szybkoscGonitwy: 4
+  typPrzechowywanegoZasobu: 0
+  Kamien: 0
+  Zloto: 0
+  Zywnosc: 0
+  Drewno: 0
+  maksymalnyZasob: 0
 --- !u!1 &8280073868254655802
 GameObject:
   m_ObjectHideFlags: 0

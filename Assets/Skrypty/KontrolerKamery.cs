@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class KontrolerKamery : MonoBehaviour
+class KontrolerKamery : MonoBehaviour
 {
     public static KontrolerKamery kontrolerKamery;
 
@@ -13,39 +13,35 @@ public class KontrolerKamery : MonoBehaviour
     RectTransform poleWyboru;
     Rect prostokat, wartoscPolaWyboru;
 
-    public float wysokoscTerenu;
-    public float predkoscZoomowania;
-    public float predkoscKamery;
+    [SerializeField]
+    float wysokoscTerenu = 0, predkoscZoomowania = 0, predkoscKamery = 0;
 
     bool czyKursorJestNaEkranie;
 
-    public Vector2 rotacjaKamery;
-    public Vector2 zoomKamery;
+    [SerializeField]
+    Vector2 rotacjaKamery = Vector2.zero, zoomKamery = Vector2.zero;
 
-    [Range(0, 0.2f)]
-    public float progKursora = 0;
+    [Range(0, 0.2f),SerializeField]
+    float progKursora = 0;
 
-    [Range(0, 1)]
-    public float stopienZoomu = 0;
+    [Range(0, 1),SerializeField]
+    float stopienZoomu = 0;
 
     [SerializeField]
     LayerMask warstwaPolecenia = -1, warstwaBudynku = 0;
 
-    Vector2 pozycjaMyszy;
-    Vector2 pozycjaMyszyNaEkranie;
-    Vector2 stopienScrolla;
-    Vector2 wejscieKlawiatury;
-
+    Vector2 pozycjaMyszy, pozycjaMyszyNaEkranie, stopienScrolla, wejscieKlawiatury;
     List<InterfejsWyboru> zaznaczoneJednostki = new List<InterfejsWyboru>();
-
     ParcelBudowlany obszar;
     GameObject budynek;
     RaycastHit punkt;
     Ray promien;
-    public byte obrot = 0;
     float x, y, z;
+    
+    public byte Obrot { get { return obrot; } }
+    private byte obrot = 0;
 
-    private void Awake()
+    void Awake()
     {
         kontrolerKamery = this;
         poleWyboru = GetComponentInChildren<Image>(true).transform as RectTransform;
@@ -53,14 +49,14 @@ public class KontrolerKamery : MonoBehaviour
         poleWyboru.gameObject.SetActive(false);
     }
 
-    private void Start()
+    void Start()
     {
         poleWyboru.gameObject.SetActive(false);
         obszar = GameObject.FindObjectOfType<ParcelBudowlany>();
         obszar.gameObject.SetActive(false);
     }
 
-    private void Update()
+    void Update()
     {
         if (obrot == 0)
         {
@@ -169,7 +165,6 @@ public class KontrolerKamery : MonoBehaviour
             {
                 Zaznaczenie();
             }
-
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -222,6 +217,8 @@ public class KontrolerKamery : MonoBehaviour
             {
                 zaznaczoneJednostki.Add(zaznaczenie);
             }
+
+            //Debug.Log(zaznaczoneJednostki.Count);
         }
     }
 
@@ -289,23 +286,25 @@ public class KontrolerKamery : MonoBehaviour
         {
             Transakcja transakcja = budynek.GetComponent<Transakcja>();
 
-            if (!transakcja || !Surowce.UjmijZywnosc(transakcja.zywnosc))
-            {
-                return;
-            }
-            else if (!transakcja || !Surowce.UjmijDrewno(transakcja.drewno))
-            {
-                return;
-            }
-            else if (!transakcja || !Surowce.UjmijKamien(transakcja.kamien))
-            {
-                return;
-            }
-            else if (!transakcja || !Surowce.UjmijZloto(transakcja.zloto))
-            {
-                return;
-            }
+            //if (!transakcja || !Surowce.UjmijZywnosc(transakcja.zywnosc))
+            //{
+            //    return;
+            //}
+            //else if (!transakcja || !Surowce.UjmijDrewno(transakcja.drewno))
+            //{
+            //    return;
+            //}
+            //else if (!transakcja || !Surowce.UjmijKamien(transakcja.kamien))
+            //{
+            //    return;
+            //}
+            //else if (!transakcja || !Surowce.UjmijZloto(transakcja.zloto))
+            //{
+            //    return;
+            //}
 
+            if (!transakcja || !Surowce.CzyStac(transakcja.zywnosc, transakcja.drewno, transakcja.kamien, transakcja.zloto)) return;
+            
             GameObject budowla = Instantiate(budynek, obszar.transform.position, obszar.transform.rotation);
 
             PladrowanieZwlok.PokazLupy(budowla.transform.position, -transakcja.zywnosc, -transakcja.drewno, -transakcja.kamien, -transakcja.zloto);

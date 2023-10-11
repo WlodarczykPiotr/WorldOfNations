@@ -3,31 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KontrolerGry : MonoBehaviour
+class KontrolerGry : MonoBehaviour
 {
     [SerializeField]
-    GameObject panelKoncowy = null, panelWaluty = null, panelJednostek = null;
-
+    GameObject panelKoncowy = null, panelWaluty = null, panelJednostek = null, panelStatystyk = null;
     [SerializeField]
     KontrolerKamery kontrolerKamery = null;
-
     [SerializeField]
     EkranPauzy ekranPauzy = null;
 
-    List<Czlowiek> listaJednostekGracza = new List<Czlowiek>();
-    List<Komputer> listaJednostekPrzeciwnika = new List<Komputer>();
+    IList<Czlowiek> listaJednostekGracza = new List<Czlowiek>();
+    IList<Komputer> listaJednostekPrzeciwnika = new List<Komputer>();
 
-    Text tekst;
+    Text tekst, statystyka;
 
     static KontrolerGry kontrolerGry;
 
-    public static List<Czlowiek> ListaJednostekGracza { get { return kontrolerGry.listaJednostekGracza; } }
-    public static List<Komputer> ListaJednostekPrzeciwnika { get { return kontrolerGry.listaJednostekPrzeciwnika; } }
+    public static IList<Czlowiek> ListaJednostekGracza { get { return kontrolerGry.listaJednostekGracza; } }
+    public static IList<Komputer> ListaJednostekPrzeciwnika { get { return kontrolerGry.listaJednostekPrzeciwnika; } }
 
-    private void Awake()
+    protected byte LicznikJednostekGracza { get; private set; } = 0;
+    protected byte LicznikJednostekPrzeciwnika { get; private set; } = 0;
+
+    void Awake()
     {
         kontrolerGry = this;
         tekst = panelKoncowy.GetComponentInChildren<Text>(true);
+        statystyka = panelStatystyk.GetComponentInChildren<Text>(true);
     }
 
     void Update()
@@ -35,17 +37,34 @@ public class KontrolerGry : MonoBehaviour
         ListaUporzadkowana(listaJednostekGracza);
         ListaUporzadkowana(listaJednostekPrzeciwnika);
 
-        if (listaJednostekPrzeciwnika.Count <= 0)
+        if (ListaJednostekPrzeciwnika.Count <= 0)
         {
             Wygrana();
         }
-        else if (listaJednostekGracza.Count <= 0)
+        else if (ListaJednostekGracza.Count <= 0)
         {
             Przegrana();
         }
+
+        if (LicznikJednostekGracza != ListaJednostekGracza.Count)
+        {
+            LicznikJednostekGracza = (byte)ListaJednostekGracza.Count;
+            statystyka.text = "JEDNOSTKI GRACZA: " + LicznikJednostekGracza + "\n" + "JEDNOSTKI PRZECIWNIKA: " + LicznikJednostekPrzeciwnika;
+        }
+
+        if (LicznikJednostekPrzeciwnika != listaJednostekPrzeciwnika.Count)
+        {
+            LicznikJednostekPrzeciwnika = (byte)ListaJednostekPrzeciwnika.Count;
+            statystyka.text = "JEDNOSTKI GRACZA: " + LicznikJednostekGracza + "\n" + "JEDNOSTKI PRZECIWNIKA: " + LicznikJednostekPrzeciwnika;
+        }
+
+        //Debug.Log(LicznikJednostekGracza);
+        //Debug.Log(LicznikJednostekPrzeciwnika);
+
+        //statystyka.text = "JEDNOSTKI GRACZA: " + LicznikJednostekGracza + "\n" + "JEDNOSTKI PRZECIWNIKA: " + LicznikJednostekPrzeciwnika;
     }
 
-    void ListaUporzadkowana<T>(List<T> lista) where T : Jednostka
+    void ListaUporzadkowana<T>(IList<T> lista) where T : Jednostka
     {
         for (int i = 0; i < lista.Count; i++)
         {

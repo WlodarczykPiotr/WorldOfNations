@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrzyciskBudynku : PrzyciskJednostki
+class PrzyciskBudynku : PrzyciskJednostki
 {
-    public void UtworzBudynek()
+    void UtworzBudynek()
     {
         KontrolerKamery.UtworzBudynek(prefabrykat);
     }
 
-    public override void UtworzJednostke()
+    protected override void UtworzJednostke()
     {
         //base.UtworzJednostke();
     }

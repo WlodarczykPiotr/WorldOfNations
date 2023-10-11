@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PasekZycia : MonoBehaviour
+class PasekZycia : MonoBehaviour
 {
     Slider pasek;
     new const string tag = "pasek";
@@ -15,7 +15,7 @@ public class PasekZycia : MonoBehaviour
 
     Transform rodzic;
 
-    private void Awake()
+    void Awake()
     {
         pasek = GetComponent<Slider>();
 
@@ -31,7 +31,7 @@ public class PasekZycia : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
         if (!rodzic)
         {
@@ -41,7 +41,7 @@ public class PasekZycia : MonoBehaviour
 
         if (jednostka)
         {
-            pasek.value = jednostka.pasekZakres;
+            pasek.value = jednostka.PasekZakres;
         }
         
         transform.position = rodzic.position + bufor;

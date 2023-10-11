@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CyklDniaINocy : MonoBehaviour
+class CyklDniaINocy : MonoBehaviour
 {
-    public float predkoscSlonca = 1;
-    private float mnozenie;
+    [SerializeField]
+    private float predkoscSlonca = 1;
+    float mnozenie;
 
     void Update()
     {

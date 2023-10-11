@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ParcelBudowlany : MonoBehaviour
+class ParcelBudowlany : MonoBehaviour
 {
     [SerializeField]
     Color zielony = Color.green, czerwony = Color.red;
@@ -22,13 +22,13 @@ public class ParcelBudowlany : MonoBehaviour
     Renderer render;
     NavMeshHit siatka;
 
-    private void Awake()
+    void Awake()
     {
         pozycjaStartowa = transform.position;
         render = GetComponentInChildren<Renderer>(true);
     }
 
-    private void Update()
+    void Update()
     {
         render.sharedMaterial.color = CzyMoznaBudowac() ? zielony : czerwony; 
     }

@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{0437D322-41FC-1D1A-5ED7-5A8ED0955803}</ProjectGuid>
+    <ProjectGuid>{B112B61A-4634-0A88-0473-4B20F7C255AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -64,37 +64,37 @@
   <ItemGroup>
     <Compile Include="Assets\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>C:/Users/grotr/Desktop/Praca dyplomowa i egzamin dyplomowy/World of Nations/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>C:/Users/grotr/Desktop/Projekty/WorldOfNations — kopia — kopia (4)/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>C:/Users/grotr/Desktop/Praca dyplomowa i egzamin dyplomowy/World of Nations/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>C:/Users/grotr/Desktop/Projekty/WorldOfNations — kopia — kopia (4)/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/grotr/Desktop/Praca dyplomowa i egzamin dyplomowy/World of Nations/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/grotr/Desktop/Projekty/WorldOfNations — kopia — kopia (4)/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/grotr/Desktop/Praca dyplomowa i egzamin dyplomowy/World of Nations/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/Users/grotr/Desktop/Projekty/WorldOfNations — kopia — kopia (4)/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/grotr/Desktop/Praca dyplomowa i egzamin dyplomowy/World of Nations/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/grotr/Desktop/Projekty/WorldOfNations — kopia — kopia (4)/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/grotr/Desktop/Praca dyplomowa i egzamin dyplomowy/World of Nations/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/grotr/Desktop/Projekty/WorldOfNations — kopia — kopia (4)/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/grotr/Desktop/Praca dyplomowa i egzamin dyplomowy/World of Nations/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/grotr/Desktop/Projekty/WorldOfNations — kopia — kopia (4)/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/grotr/Desktop/Praca dyplomowa i egzamin dyplomowy/World of Nations/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/grotr/Desktop/Projekty/WorldOfNations — kopia — kopia (4)/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/grotr/Desktop/Praca dyplomowa i egzamin dyplomowy/World of Nations/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/Users/grotr/Desktop/Projekty/WorldOfNations — kopia — kopia (4)/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/grotr/Desktop/Praca dyplomowa i egzamin dyplomowy/World of Nations/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/grotr/Desktop/Projekty/WorldOfNations — kopia — kopia (4)/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/grotr/Desktop/Praca dyplomowa i egzamin dyplomowy/World of Nations/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/grotr/Desktop/Projekty/WorldOfNations — kopia — kopia (4)/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -286,7 +286,7 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>C:/Users/grotr/Desktop/Praca dyplomowa i egzamin dyplomowy/World of Nations/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>C:/Users/grotr/Desktop/Projekty/WorldOfNations — kopia — kopia (4)/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -645,7 +645,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{B7BB64DA-C217-27A5-166C-983FA8B59649}</Project>
+      <Project>{AC3D8D72-F658-DB30-55E5-C4BA6C3BE1DA}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
   </ItemGroup>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Informacja : MonoBehaviour
+class Informacja : MonoBehaviour
 {
     Transform kameraPozycja;
 
@@ -20,7 +20,7 @@ public class Informacja : MonoBehaviour
         rotacja.y = 180;
         transform.localEulerAngles = rotacja;
 
-        if (KontrolerKamery.kontrolerKamery.obrot == 1)
+        if (KontrolerKamery.kontrolerKamery.Obrot == 1)
         {
             rotacja.y = 0;
             transform.localEulerAngles = rotacja;

@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuGlowne : MonoBehaviour
+class MenuGlowne : MonoBehaviour
 {
-    public void ZacznijGrac()
+    void ZacznijGrac()
     {
         SceneManager.LoadScene(1);
     }
 
-    public void WyjdzZGry()
+    void WyjdzZGry()
     {
         Application.Quit();
     }
 
-    public void Sterowanie()
+    void Sterowanie()
     {
         SceneManager.LoadScene(2);
     }
 
-    public void Menu()
+    void Menu()
     {
         SceneManager.LoadScene(0);
     }

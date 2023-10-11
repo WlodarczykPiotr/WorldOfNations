@@ -6,6 +6,13 @@ TagManager:
   tags:
   - pasek
   - cel
+  - Zasoby
+  - Magazyn
+  - surowce
+  - drewno
+  - kamien
+  - zloto
+  - zywnosc
   layers:
   - Default
   - TransparentFX

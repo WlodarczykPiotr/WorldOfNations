@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine.Audio;
 using UnityEngine;
 
-public class OdtwarzaczOdglosow : MonoBehaviour
+class OdtwarzaczOdglosow : MonoBehaviour
 {
-    public static AudioClip[] brzdek = new AudioClip[9];
-    public static AudioClip[] smierc = new AudioClip[13];
+    static AudioClip[] brzdek = new AudioClip[9];
+    static AudioClip[] smierc = new AudioClip[13];
+    static AudioClip[] odglosy = new AudioClip[8];
 
-    public static AudioSource zrodlo;
+    static AudioSource zrodlo;
     
     void Start()
     {
@@ -20,6 +21,11 @@ public class OdtwarzaczOdglosow : MonoBehaviour
         for (int i = 0; i < brzdek.Length; i++)
         {
             brzdek[i] = Resources.Load<AudioClip>("brzdek" + i);
+        }
+
+        for (int i = 0; i < odglosy.Length; i++)
+        {
+            odglosy[i] = Resources.Load<AudioClip>("odglos" + i);
         }
 
         zrodlo = GetComponent<AudioSource>();
@@ -94,6 +100,30 @@ public class OdtwarzaczOdglosow : MonoBehaviour
                 break;
             case "brzdek8":
                 zrodlo.PlayOneShot(brzdek[8]);
+                break;
+            case "odglos0":
+                zrodlo.PlayOneShot(odglosy[0]);
+                break;
+            case "odglos1":
+                zrodlo.PlayOneShot(odglosy[1]);
+                break;
+            case "odglos2":
+                zrodlo.PlayOneShot(odglosy[2]);
+                break;
+            case "odglos3":
+                zrodlo.PlayOneShot(odglosy[3]);
+                break;
+            case "odglos4":
+                zrodlo.PlayOneShot(odglosy[4]);
+                break;
+            case "odglos5":
+                zrodlo.PlayOneShot(odglosy[5]);
+                break;
+            case "odglos6":
+                zrodlo.PlayOneShot(odglosy[6]);
+                break;
+            case "odglos7":
+                zrodlo.PlayOneShot(odglosy[7]);
                 break;
         }
     }

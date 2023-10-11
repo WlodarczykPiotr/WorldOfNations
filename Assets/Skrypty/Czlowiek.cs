@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Czlowiek : Jednostka, InterfejsWyboru
+class Czlowiek : Jednostka, InterfejsWyboru
 {
     [Header("Czlowiek")]
     [SerializeField]
-    ParticleSystem efektCiosu = null, efektUderzenia = null;
+    ParticleSystem efektCiosu = null;
+    [SerializeField]
+    ParticleSystem efektUderzenia = null;
     [SerializeField]
     LayerMask warstwaCiosu = 0;
     [Range(0, .3f), SerializeField]
@@ -18,6 +20,10 @@ public class Czlowiek : Jednostka, InterfejsWyboru
     float normalnaSzybkosc = 3;
 
     Light efektSwiatla;
+
+    List<Komputer> listaJednostekPrzeciwnika = new List<Komputer>();
+
+    int generatorOdglosuRozkazu;
 
     protected override void Awake()
     {
@@ -30,6 +36,8 @@ public class Czlowiek : Jednostka, InterfejsWyboru
         KoniecCiosu();
 
         enabled = true;
+
+        generatorOdglosuRozkazu = Random.Range(0, 7);
     }
 
     protected override void Start()
@@ -37,32 +45,34 @@ public class Czlowiek : Jednostka, InterfejsWyboru
         base.Start();
         KontrolerGry.ListaJednostekGracza.Add(this);
     }
-
+    
     public void UstawZaznaczenie(bool zaznaczenie)
     {
         pasek_zycia.gameObject.SetActive(zaznaczenie);
     }
 
-    new void Polecenie(Vector3 podazanie)
+    protected new void Polecenie(Vector3 podazanie)
     {
         if (CzyZyje)
         {
             nawigacja.SetDestination(podazanie);
             polecenie = Jednostka.Polecenie.idz;
             cel = null;
+            OdtwarzaczOdglosow.PlaySound("odglos" + generatorOdglosuRozkazu);
         }
     }
 
-    new void Polecenie(Czlowiek sledzenie)
+    protected new void Polecenie(Czlowiek sledzenie)
     {
         cel = sledzenie.transform;
         polecenie = Jednostka.Polecenie.sledz;
     }
 
-    new void Polecenie(Komputer Cel)
+    protected new void Polecenie(Komputer Cel)
     {
         cel = Cel.transform;
         polecenie = Jednostka.Polecenie.gon;
+        OdtwarzaczOdglosow.PlaySound("odglos7");
     }
 
     protected override void Spocznij()
@@ -88,7 +98,7 @@ public class Czlowiek : Jednostka, InterfejsWyboru
         nawigacja.speed = szybkoscGonitwy;
     }
 
-    public override void ZadajObrazenia()
+    protected override void ZadajObrazenia()
     {
         if (Cios())
         {
@@ -139,14 +149,12 @@ public class Czlowiek : Jednostka, InterfejsWyboru
         efektSwiatla.enabled = false;
     }
 
-    public override void PrzyjmijObrazenia(float obrazenia, Vector3 pozycjaZadawaniaObrazen)
+    protected override void PrzyjmijObrazenia(float obrazenia, Vector3 pozycjaZadawaniaObrazen)
     {
         base.PrzyjmijObrazenia(obrazenia, pozycjaZadawaniaObrazen);
 
         //animator.SetTrigger("Cios");
     }
-
-    List<Komputer> listaJednostekPrzeciwnika = new List<Komputer>();
 
     Komputer NajblizszaJednostka
     {
@@ -157,7 +165,7 @@ public class Czlowiek : Jednostka, InterfejsWyboru
                 return null;
             }
 
-            float najmniejszaOdleglosc = float.MaxValue;
+            float najmniejszaOdleglosc = 3.0f;
 
             Komputer najblizszaJednostka = null;
 
@@ -181,7 +189,7 @@ public class Czlowiek : Jednostka, InterfejsWyboru
         }
     }
 
-    private void OnTriggerEnter(Collider kolizja)
+    protected virtual void OnTriggerEnter(Collider kolizja)
     {
         Komputer komputer = kolizja.gameObject.GetComponent<Komputer>();
 
@@ -191,7 +199,7 @@ public class Czlowiek : Jednostka, InterfejsWyboru
         }
     }
 
-    private void OnTriggerExit(Collider kolizja)
+    protected virtual void OnTriggerExit(Collider kolizja)
     {
         Komputer komputer = kolizja.gameObject.GetComponent<Komputer>();
 

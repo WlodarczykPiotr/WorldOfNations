@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OdtwarzaczMuzyki : MonoBehaviour
+class OdtwarzaczMuzyki : MonoBehaviour
 {
-    public AudioClip[] utwory;
+    [SerializeField]
+    AudioClip[] utwory = null;
 
-    private AudioSource zrodlo;
+    AudioSource zrodlo;
 
     void Start()
     {
@@ -14,7 +15,7 @@ public class OdtwarzaczMuzyki : MonoBehaviour
         zrodlo.loop = false;
     }
 
-    private AudioClip WczytajUtwor()
+    AudioClip WczytajUtwor()
     {
         return utwory[Random.Range(0, utwory.Length)];
     }

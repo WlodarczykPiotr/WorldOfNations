@@ -4,28 +4,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Surowce : MonoBehaviour
+class Surowce : MonoBehaviour
 {
     [SerializeField]
-    ushort zywnosc, drewno, kamien, zloto, maksymalnaIlosc = 65535;
+    private ushort zywnosc, drewno, kamien, zloto, maksymalnaIlosc = 65535;
 
-    static Surowce surowiec;
+    private static Surowce surowiec;
 
     Text tekst;
 
-    private Texture[] ikonaSurowca = new Texture[4];
-    private Rect[] pozycjaIkonySurowca = new Rect[4];
+    Texture[] ikonaSurowca = new Texture[4];
+    Rect[] pozycjaIkonySurowca = new Rect[4];
 
-    private String[] zasob = new String[4] { "Zywnosc", "Drewno", "Kamien", "Zloto" };
-    private float[] pozycja = new float[4] { Screen.width - 540, Screen.width - 420, Screen.width - 300, Screen.width - 180 };
+    String[] zasob = new String[4] { "Zywnosc", "Drewno", "Kamien", "Zloto" };
+    float[] pozycja = new float[4] { Screen.width - 540, Screen.width - 420, Screen.width - 300, Screen.width - 180 };
 
-    private void Awake()
+    void Awake()
     {
         surowiec = this;
         tekst = GetComponentInChildren<Text>(true);
     }
 
-    private void Start()
+    void Start()
     {
         for (int i = 0; i < ikonaSurowca.Length; i++)
         {
@@ -33,7 +33,7 @@ public class Surowce : MonoBehaviour
             pozycjaIkonySurowca[i] = new Rect(pozycja[i], 20, 120, 40);
         }
     }
-    private void OnGUI()
+    void OnGUI()
     {
         for (int i = 0; i < ikonaSurowca.Length; i++)
         {

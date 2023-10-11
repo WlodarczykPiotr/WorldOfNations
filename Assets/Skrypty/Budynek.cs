@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Budynek : MonoBehaviour,InterfejsWyboru
+class Budynek : MonoBehaviour, InterfejsWyboru
 {
     [SerializeField]
     Transform punktUtworzenia = null, choragiew = null;
     [SerializeField]
     GameObject pasekZycia = null;
 
-    protected PasekZycia pasek_zycia;
+    PasekZycia pasek_zycia;
 
     void Start()
     {
@@ -62,7 +62,7 @@ public class Budynek : MonoBehaviour,InterfejsWyboru
         choragiew.position = pozycjaChoragwi;
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
         Jednostka.ZaznaczoneJednostki.Remove(this);
     }

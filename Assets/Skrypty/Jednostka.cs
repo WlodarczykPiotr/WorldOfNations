@@ -5,7 +5,7 @@ using UnityEngine.AI; //biblioteka nawigacji
 
 // Funkcje napisane na niebiesko są funkcjami systemowymi Unity, wywołują się automatycznie w konkretnych momentach przez silnik Unity
 
-public class Jednostka : MonoBehaviour
+abstract class Jednostka : MonoBehaviour
 {
     //Serializacja to automatyczny proces przekształcania struktur danych lub stanów obiektów do formatu, który Unity może przechowywać i rekonstruować później.
 
@@ -14,7 +14,7 @@ public class Jednostka : MonoBehaviour
     //Unity używa serializacji do ładowania i zapisywania scen
     //Wiele funkcji edytora Unity jest tworzonych na podstawie podstawowego systemu serializacji. Dwie rzeczy, na które należy zwrócić szczególną uwagę w przypadku serializacji, to okno Inspector i ponowne ładowanie na goraco.
     //Okno inspektora. Podczas przeglądania lub zmiany wartości GameObject Pola komponentu w oknie Inspector, Unity serializuje te dane, a następnie wyświetla je w oknie Inspector.
-    //Jeśli używasz właściwości w skrypcie, żadne z metod pobierających i ustawiających właściwości nigdy nie są wywoływane podczas przeglądania lub zmiany wartości w oknach inspektora, ponieważ Unity bezpośrednio serializuje pola okna inspektora. Oznacza to, że: Podczas gdy wartości pola w oknie Inspector reprezentują właściwości skryptu, zmiany wartości w oknie Inspector nie wywołują żadnych metod pobierających i ustawiających właściwości w skrypcie
+    //Jeśli używasz właściwości w skrypcie, żadne z metod pobierających i ustawiających właściwości nigdy nie są wywoływane podczas przeglądania lub zmiany wartości w oknach inspektora, ponieważ Unity bezpośrednio serializuje pola okna inspektora. Oznacza to, że: Podczas gdy wartości pola w oknie Inspector reprezentują właściwości skryptu, zmiany wartości w oknie Inspector nie wywołują żadnych metod pobierających i ustawiających właściwości w skrypcie.
 
     [Header("Jednostka")]
     [SerializeField]
@@ -22,14 +22,20 @@ public class Jednostka : MonoBehaviour
     [SerializeField]
     float pasek, maks = 100;
     [SerializeField]
-    protected float obrazeniaAtaku = 10;
+    float obrazeniaAtaku = 10;
     [SerializeField]
-    protected float szybkoscAtaku = 1;
+    float szybkoscAtaku = 1;
     [SerializeField]
     protected float odlegloscDoAtaku = 1;
     [SerializeField]
-    protected float stop = 1;
-    
+    float stop = 1;
+
+    public bool CzyZyje { get { return pasek > 0; } }
+    public float PasekZakres { get { return pasek / maks; } }
+
+    public static List<InterfejsWyboru> ZaznaczoneJednostki { get { return zaznaczoneJednostki; } }
+    private static List<InterfejsWyboru> zaznaczoneJednostki = new List<InterfejsWyboru>();
+
     protected PasekZycia pasek_zycia;
     protected NavMeshAgent nawigacja;
     protected Animator animator;
@@ -43,17 +49,11 @@ public class Jednostka : MonoBehaviour
     const string WALKA = "Walka";
     const string CIOS = "Cios";
     const string KONIEC = "Koniec";
+    
+    int generatorBrzdekuMiecza;
+    int generatorOdglosuSmierci;
 
-    public bool CzyZyje { get { return pasek > 0; } }
-    public float pasekZakres { get { return pasek / maks; } }
-
-    public static List<InterfejsWyboru> ZaznaczoneJednostki { get { return zaznaczoneJednostki; } }
-    static List<InterfejsWyboru> zaznaczoneJednostki = new List<InterfejsWyboru>();
-
-    private int generatorBrzdekuMiecza;
-    private int generatorOdglosuSmierci;
-
-    public enum Polecenie
+    protected enum Polecenie
     {
         spocznij, idz, sledz, atakuj, gon
     }
@@ -83,7 +83,7 @@ public class Jednostka : MonoBehaviour
         }
     }
 
-    void Update() // Funkcja ta jest wywoływana z każdą klatką gry
+    protected virtual void Update() // Funkcja ta jest wywoływana z każdą klatką gry
     {
         //Aktualizacja jest wywoływana raz na klatkę
 
@@ -91,6 +91,7 @@ public class Jednostka : MonoBehaviour
         nawigacja.SetDestination(cel.position); // Podążanie obiektu ze skryptem nawigacji za obiektem umieszczonym w komponecie Transform
 
         // ustawia lub aktualizuje miejsce docelowe, uruchamiając w ten sposób obliczenia dla nowej ścieżki
+        
 
         if (CzyZyje)
         {
@@ -200,7 +201,7 @@ public class Jednostka : MonoBehaviour
         }
     }
 
-    public virtual void Atak()
+    protected virtual void Atak()
     {
         Jednostka jednostka = cel.GetComponent<Jednostka>();
 
@@ -215,10 +216,9 @@ public class Jednostka : MonoBehaviour
             cel = null;
             polecenie = Polecenie.spocznij;
         }
-
     }
 
-    public virtual void ZadajObrazenia()
+    protected virtual void ZadajObrazenia()
     {
         if (cel != null)
         {
@@ -231,7 +231,7 @@ public class Jednostka : MonoBehaviour
         }
     }
 
-    public virtual void PrzyjmijObrazenia(float obrazenia, Vector3 pozycjaZadawaniaObrazen)
+    protected virtual void PrzyjmijObrazenia(float obrazenia, Vector3 pozycjaZadawaniaObrazen)
     {
         if (CzyZyje)
         {
@@ -245,8 +245,8 @@ public class Jednostka : MonoBehaviour
             OdtwarzaczOdglosow.PlaySound("smierc"+ generatorOdglosuSmierci);
             animator.SetTrigger(KONIEC);
             pasek_zycia.gameObject.SetActive(false);
-            enabled = false;
             nawigacja.enabled = false;
+            enabled = false;
 
             foreach (var zderzak in GetComponents<Collider>())
             {
@@ -257,16 +257,27 @@ public class Jednostka : MonoBehaviour
             {
                 zaznaczoneJednostki.Remove(this as InterfejsWyboru);
             }
+
+            //Debug.Log(zaznaczoneJednostki.Count);
+
+            //Destroy(this.gameObject, 60.0f);
+            StartCoroutine(Dezaktywacja());
         }
     }
     
+    IEnumerator Dezaktywacja()
+    {
+        yield return new WaitForSeconds(60.0f);
+        this.gameObject.SetActive(false);
+    }
+
     protected virtual void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, odlegloscDoAtaku);
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
         if (this is InterfejsWyboru) zaznaczoneJednostki.Remove(this as InterfejsWyboru);
     }

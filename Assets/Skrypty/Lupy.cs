@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Lupy : MonoBehaviour
+class Lupy : MonoBehaviour
 {
-    public int zywnosc, drewno, kamien, zloto;
+    int zywnosc, drewno, kamien, zloto;
+
+    public int Zywnosc { set { zywnosc = value; } }
+    public int Drewno { set { drewno = value; } }
+    public int Kamien { set { kamien = value; } }
+    public int Zloto { set { zloto = value; } }
 
     [SerializeField]
     Vector3 buforPoczatek = Vector3.zero, buforKoniec = Vector3.zero;
@@ -20,7 +25,7 @@ public class Lupy : MonoBehaviour
     Text tekst;
     float czas;
 
-    private void Awake()
+    void Awake()
     {
         tekst = GetComponentInChildren<Text>(true);
         pozycjaPoczatkowa = transform.position;

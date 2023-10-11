@@ -3,13 +3,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PasekLadowania : MonoBehaviour
+class PasekLadowania : MonoBehaviour
 {
-    public GameObject ekranSzkolenia;
-    public Slider suwak;
-    public Text postepWProcentach;
+    [SerializeField]
+    private GameObject ekranSzkolenia = null;
+    [SerializeField]
+    private Slider suwak = null;
+    [SerializeField]
+    private Text postepWProcentach = null;
 
-    public void SzkolJednostke(int sceneIndex)
+    void SzkolJednostke(int sceneIndex)
     {
         StartCoroutine(SzkolAsynchronicznie(sceneIndex));
     }

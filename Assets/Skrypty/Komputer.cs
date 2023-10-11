@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Komputer : Jednostka
+class Komputer : Jednostka
 {
     [SerializeField]
     float promienZasiegu = 5;
@@ -112,7 +112,7 @@ public class Komputer : Jednostka
         nawigacja.SetDestination(pozycjaStartowa + przesuniecie);
     }
 
-    public override void PrzyjmijObrazenia(float obrazenia, Vector3 pozycjaZadawaniaObrazen)
+    protected override void PrzyjmijObrazenia(float obrazenia, Vector3 pozycjaZadawaniaObrazen)
     {
         base.PrzyjmijObrazenia(obrazenia, pozycjaZadawaniaObrazen);
 
@@ -122,7 +122,7 @@ public class Komputer : Jednostka
             nawigacja.SetDestination(pozycjaZadawaniaObrazen);
         }
 
-        if (pasekZakres < 1f)
+        if (PasekZakres < 1f)
         {
             nawigacja.velocity = Vector3.zero;
         }
@@ -134,7 +134,7 @@ public class Komputer : Jednostka
     }
 
     
-    private void OnTriggerEnter(Collider kolizja)
+    void OnTriggerEnter(Collider kolizja)
     {
         Czlowiek czlowiek = kolizja.gameObject.GetComponent<Czlowiek>();
 
@@ -144,7 +144,7 @@ public class Komputer : Jednostka
         }
     }
 
-   private void OnTriggerExit(Collider kolizja)
+   void OnTriggerExit(Collider kolizja)
     {
         Czlowiek czlowiek = kolizja.gameObject.GetComponent<Czlowiek>();
 

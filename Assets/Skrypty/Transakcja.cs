@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Transakcja : MonoBehaviour
+class Transakcja : MonoBehaviour
 {
-    public ushort zywnosc, drewno, kamien, zloto;
+    public ushort zywnosc = 0, drewno = 0, kamien = 0, zloto = 0;
 
-    public Sprite zdjecie;  
+    public Sprite zdjecie = null;  
 }

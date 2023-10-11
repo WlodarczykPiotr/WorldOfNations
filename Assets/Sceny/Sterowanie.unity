@@ -144,7 +144,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235739986}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -602,8 +602,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1350, y: 300}
+  m_AnchoredPosition: {x: 0, y: -42.4}
+  m_SizeDelta: {x: 1350, y: 297.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1359304704
 MonoBehaviour:
@@ -627,7 +627,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -646,13 +646,18 @@ MonoBehaviour:
     klawiatury. Gdy chcesz zobaczy\u0107 co dzieje si\u0119 na p\xF3\u0142nocy mapy
     od miejsca w kt\xF3rym si\u0119 aktualnie znajdujesz to naci\u015Bnij klawisz
     strza\u0142ka w g\xF3r\u0119, na po\u0142udniu - strza\u0142ka w d\xF3\u0142,
-    na wschodzie - strza\u0142ka w lewo, na zachodzie - strza\u0142ka w prawo.\nAnalogicznie
-    jest z klawiszami W, S, A, D. Gdy naci\u015Bniesz klawisz W przemie\u015Bcisz
-    si\u0119 w g\xF3r\u0119 sceny,\nklawisz S - w d\xF3\u0142 sceny, klawisz A - na
-    lewo od sceny, a klawisz D - na prawo od sceny.\nPodczas rozgrywki w ka\u017Cdej
-    chwili mo\u017Cesz z niej wyj\u015B\u0107 do g\u0142ownego MENU gry naciskaj\u0105c
-    klawisz ESC.\nB\u0119d\u0105c w MENU g\u0142\xF3wnym, aby wyjs\u0107 z gry kliknij
-    LPM na przycisk z napisem WYJD\u0179 Z GRY."
+    na wschodzie - strza\u0142ka w lewo, na zachodzie - strza\u0142ka w prawo.\nGdy
+    chcesz przybli\u017Cy\u0107 kamer\u0119 do sceny przewi\u0144 rolk\u0119 myszki
+    do przodu.\nNatomiast gdy chcesz oddali\u0107 kamer\u0119 od sceny przewi\u0144
+    rolk\u0119 myszki do ty\u0142u.\nAby wypo\u015Brodkowa\u0107 odleg\u0142o\u015B\u0107
+    kamery od sceny kliknij rolk\u0119 myszki.\nAnalogicznie jest z klawiszami W,
+    S, A, D. Gdy naci\u015Bniesz klawisz W przemie\u015Bcisz si\u0119 w g\xF3r\u0119
+    sceny,\nklawisz S - w d\xF3\u0142 sceny, klawisz A - na lewo od sceny, a klawisz
+    D - na prawo od sceny.\nNaci\u015Bni\u0119cie klawisza SPACE, spowoduje obr\xF3t
+    kamery sceny o 180 stopni.\nPodczas rozgrywki w ka\u017Cdej chwili mo\u017Cesz
+    z niej wyj\u015B\u0107 do g\u0142ownego MENU gry naciskaj\u0105c klawisz ESC.\nB\u0119d\u0105c
+    w MENU g\u0142\xF3wnym, aby wyjs\u0107 z gry kliknij LPM na przycisk z napisem
+    WYJD\u0179 Z GRY."
 --- !u!222 &1359304705
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -697,7 +702,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -859,7 +864,11 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'USTAWIENIA STEROWANIA
 
-    LPM - lewy przycisk myszy'
+    LPM - Lewy Przycisk Myszki
+
+    SCROLL - rolka myszki
+
+    SPACE - klawisz spacji'
 --- !u!222 &1714886255
 CanvasRenderer:
   m_ObjectHideFlags: 0

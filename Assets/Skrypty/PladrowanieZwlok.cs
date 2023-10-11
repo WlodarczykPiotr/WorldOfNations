@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PladrowanieZwlok : MonoBehaviour
+class PladrowanieZwlok : MonoBehaviour
 {
     [SerializeField]
     GameObject prefabrykat = null;
 
     static PladrowanieZwlok lupy;
 
-    private void Awake()
+    void Awake()
     {
         lupy = this;
     }
@@ -17,9 +17,9 @@ public class PladrowanieZwlok : MonoBehaviour
     public static void PokazLupy(Vector3 pozycja, int iloscZywnosci, int iloscDrewna, int iloscKamienia, int iloscZlota)
     {
         GameObject surowce = Instantiate(lupy.prefabrykat, pozycja, lupy.transform.rotation, lupy.transform);
-        surowce.GetComponent<Lupy>().zywnosc = iloscZywnosci;
-        surowce.GetComponent<Lupy>().drewno = iloscDrewna;
-        surowce.GetComponent<Lupy>().kamien = iloscKamienia;
-        surowce.GetComponent<Lupy>().zloto = iloscZlota;
+        surowce.GetComponent<Lupy>().Zywnosc = iloscZywnosci;
+        surowce.GetComponent<Lupy>().Drewno = iloscDrewna;
+        surowce.GetComponent<Lupy>().Kamien = iloscKamienia;
+        surowce.GetComponent<Lupy>().Zloto = iloscZlota;
     }
 }

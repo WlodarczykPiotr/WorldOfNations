@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EkranPauzy : MonoBehaviour
+class EkranPauzy : MonoBehaviour
 {
     [SerializeField]
     GameObject panelPrzerwy = null;
 
-    private bool statusPauzy = false;
+    bool statusPauzy = false;
 
-    private void Start()
+    void Start()
     {
         Time.timeScale = 1;
     }

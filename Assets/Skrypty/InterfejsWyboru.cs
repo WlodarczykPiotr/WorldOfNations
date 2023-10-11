@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface InterfejsWyboru
+interface InterfejsWyboru
 {
     void UstawZaznaczenie(bool zaznaczenie); 
 }
